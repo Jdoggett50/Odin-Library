@@ -1,4 +1,3 @@
-
 //  instantiated book logic
 //initialize empty array to store books
 
