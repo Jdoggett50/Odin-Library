@@ -1,14 +1,19 @@
+//  form generation logic
+//toggle the display property of transparent  
+//background. On add, toggle display: flex;
+//on close, toggle display: none;
+
+//target the elements to add event listeners to
+const addBook = document.querySelector('.add-book');
+const background = document.querySelector('.transparent-background');
+addBook.addEventListener('click', () => background.style.display = 'grid');
+
+const close = document.querySelector('.close')
+close.addEventListener('click',() => background.style.display = 'none');
+
+
 //  instantiated book logic
 //initialize empty array to store books
-
-//  styling logic
-//when the array.length is < 0 add books will appear in the center of the page
-//where the books will reside
-//when the array.length > 0, remove the text in the middle of the screen and place the
-//add button to top right side of content
-//with each book, add a photo of a random colored closed book and toggle markup
-//on the  
-
 let myLibrary = [];
 //create the constructor for each book instance
 function Book (title,pages,author,genre){
