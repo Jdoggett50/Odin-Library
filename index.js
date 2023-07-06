@@ -19,18 +19,25 @@ clearBook.addEventListener('click', () => {
     inputValues.forEach((input)=> input.value = '');
 })
 
-
+//generates new Book instance
 createBook.addEventListener('click', () => {
     //receive the data from the form
+    addBook()
     let anotherBook = new Book(bookName.value,author.value,pages.value);
-    const booksContainer = document.querySelector('.books-container');
-    const div = document.createElement('div');
-    div.textContent='hello, world';
-    booksContainer.append(div)
     myLibrary.push(anotherBook);
-    //the submit click needs to generate one div that is appended to books 
     console.log(myLibrary);
 })
+
+//adds Book instance to DOM
+function addBook() {
+    const booksContainer = document.querySelector('.books-container');
+    //toggle on the classlist for books, each div is going to be added to that classlist with background image of the book
+    const div = document.createElement('div');
+    div.classList.add('books')
+    //target the div and add to the classlist
+    div.textContent='hello, world';
+    booksContainer.append(div)
+}
 
 
 //forEach item in the array, create a div, with

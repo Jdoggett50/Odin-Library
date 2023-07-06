@@ -92,11 +92,12 @@ button {
 
 .books-container {
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-area: 2 / 2 / 3 / 2;
+    gap: 10px;
 }
 
-/* .books {
-    
-} */
+.books {
+    background: green;
+}
