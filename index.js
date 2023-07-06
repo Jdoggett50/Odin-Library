@@ -23,12 +23,12 @@ clearBook.addEventListener('click', () => {
 createBook.addEventListener('click', () => {
     //receive the data from the form
     let anotherBook = new Book(bookName.value,author.value,pages.value);
+    const booksContainer = document.querySelector('.books-container');
+    const div = document.createElement('div');
+    div.textContent='hello, world';
+    booksContainer.append(div)
     myLibrary.push(anotherBook);
-    // myLibrary.forEach(() => {
-    //     const div = document.createElement('div');
-    //     div.style.width = '20px';
-    //     div.style.height = '20px';
-    // })
+    //the submit click needs to generate one div that is appended to books 
     console.log(myLibrary);
 })
 
