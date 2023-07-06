@@ -92,12 +92,17 @@ button {
 
 .books-container {
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(180px, 5rem));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 5rem));
     grid-area: 2 / 2 / 3 / 2;
-    gap: 10px;
+    gap: 30px;
 }
 
 .books {
-    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url("/photos/closed-book.PNG");
 }
