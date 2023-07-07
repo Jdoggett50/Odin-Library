@@ -12,7 +12,7 @@ const bookName = document.querySelector('#book-name');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#total-pages');
 const clearBook = document.querySelector('.clear-book');
-const bookContainer = document.querySelector('.book-container')
+const booksContainer = document.querySelector('.books-container')
 
 clearBook.addEventListener('click', () => {
     const inputValues = document.querySelectorAll('label > input');
@@ -36,12 +36,23 @@ function addBook() {
 //create a function that will be used in the forEach method
 
 function displayBook() {
+    if (!this.title || !this.author || !this.pages) {
+        alert('Please add the proper credentials')
+    } else {
     const div = document.createElement('div');
-    div.textContent = `${this.title}`;
-    div.classList.add('books')
-    bookContainer.append(div);
+    const span = document.createElement('span');
+    span.textContent = `${this.title} 
+    ${this.author} 
+    
+    ${this.pages}`;
+    div.append(span);
+    div.classList.add('books');
+    booksContainer.append(div);
+    }
     //add div to classList('books')
 }
+
+//add form validation to the form via js  
 
 function Book (title,author,pages){
     this.title = title;

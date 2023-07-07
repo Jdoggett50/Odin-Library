@@ -99,10 +99,17 @@ button {
 }
 
 .books {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:grid;
+    grid-template-columns: 1fr 3fr;
     background-size: 100%;
     background-repeat: no-repeat;
     background-image: url("/photos/closed-book.PNG");
+}
+
+.books span {
+    padding: 10px;
+    color: #c39054;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: medium;
 }
