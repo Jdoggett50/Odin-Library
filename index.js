@@ -1,5 +1,12 @@
 let myLibrary = [];
 
+
+myLibrary.push(new Book('john doggett', 'cat tales', '197'))
+myLibrary.push(new Book('john doggett', 'cat tales', '197'))
+myLibrary.push(new Book('john doggett', 'cat tales', '197'))
+
+console.log(myLibrary)
+
 const addButton = document.querySelector('.add-button');
 const background = document.querySelector('.transparent-background');
 const close = document.querySelector('.close');
@@ -19,40 +26,23 @@ clearBook.addEventListener('click', () => {
     inputValues.forEach((input)=> input.value = '');
 });
 
-bookBtn.addEventListener('click', addBook) 
+bookBtn.addEventListener('click', displayBooks)
 
-//rewrite the addBook function. It should loop through the array
 
-function addBook() {
-    let anotherBook = new Book(bookName.value,author.value,pages.value);
-    myLibrary.push(anotherBook);
-    //this instance method is equal to 
-    anotherBook.displayBook = displayBook.bind(anotherBook);
-    anotherBook.displayBook();
-    //assign the new function with the 'this' binding to a method derived from a separate function
-    console.log(myLibrary)
-};
-
-//create a function that will be used in the forEach method
-
-function displayBook() {
-    if (!this.title || !this.author || !this.pages) {
-        alert('Please add the proper credentials')
-    } else {
-    const div = document.createElement('div');
-    const span = document.createElement('span');
-    span.textContent = `${this.title} 
-    ${this.author} 
-    
-    ${this.pages}`;
-    div.append(span);
-    div.classList.add('books');
-    booksContainer.append(div);
-    }
-    //add div to classList('books')
+function displayBooks(){
+    myLibrary.forEach(index => {
+        const div = document.createElement('div');
+        const span = document.createElement('span');
+        booksContainer.append(div);
+        span.textContent = `${index.title} ${index.author} ${index.pages}`;
+        span.classList.add('books');
+        div.append(span);
+        console.log(`${index.title}
+        ${index.author}
+        ${index.pages}`);
+    })
 }
 
-//add form validation to the form via js  
 
 function Book (title,author,pages){
     this.title = title;
