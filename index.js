@@ -1,10 +1,5 @@
 let myLibrary = [];
 
-
-myLibrary.push(new Book('john doggett', 'cat tales', '197'))
-myLibrary.push(new Book('john doggett', 'cat tales', '197'))
-myLibrary.push(new Book('john doggett', 'cat tales', '197'))
-
 console.log(myLibrary)
 
 const addButton = document.querySelector('.add-button');
@@ -35,7 +30,7 @@ function displayBooks(){
         const span = document.createElement('span');
         booksContainer.append(div);
         span.textContent = `${index.title} ${index.author} ${index.pages}`;
-        span.classList.add('books');
+        div.classList.add('books');
         div.append(span);
         console.log(`${index.title}
         ${index.author}
