@@ -1,7 +1,5 @@
 let myLibrary = [];
 
-console.log(myLibrary)
-
 const addButton = document.querySelector('.add-button');
 const background = document.querySelector('.transparent-background');
 const close = document.querySelector('.close');
@@ -14,15 +12,28 @@ const bookName = document.querySelector('#book-name');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#total-pages');
 const clearBook = document.querySelector('.clear-book');
-const booksContainer = document.querySelector('.books-container')
+let booksContainer = document.querySelector('.books-container');
 
 clearBook.addEventListener('click', () => {
     const inputValues = document.querySelectorAll('label > input');
     inputValues.forEach((input)=> input.value = '');
 });
 
-bookBtn.addEventListener('click', displayBooks)
+bookBtn.addEventListener('click', () => {
+    if(bookName.value === '' || author.value === '' || pages.value === ''){
+        alert('Please create a book');
+    } else 
+    addBook(bookName.value, author.value, pages.value);
+    booksContainer.innerHTML = '';
+    displayBooks()
+})
 
+function addBook(title, author, pages) {
+    //use this function to set the data on each object
+    return myLibrary.push(new Book(title, author, pages));
+}
+
+//each iteration of forEach adds the length of the array plus 1 every time a book is added.
 
 function displayBooks(){
     myLibrary.forEach(index => {
@@ -32,12 +43,8 @@ function displayBooks(){
         span.textContent = `${index.title} ${index.author} ${index.pages}`;
         div.classList.add('books');
         div.append(span);
-        console.log(`${index.title}
-        ${index.author}
-        ${index.pages}`);
     })
 }
-
 
 function Book (title,author,pages){
     this.title = title;
