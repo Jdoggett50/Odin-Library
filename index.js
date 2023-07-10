@@ -26,25 +26,38 @@ bookBtn.addEventListener('click', () => {
     addBook(bookName.value, author.value, pages.value);
     booksContainer.innerHTML = '';
     displayBooks()
-})
+});
 
 function addBook(title, author, pages) {
-    //use this function to set the data on each object
+    //use this function to set the data on each object.
     return myLibrary.push(new Book(title, author, pages));
 }
 
-//each iteration of forEach adds the length of the array plus 1 every time a book is added.
+function removeBook() {
+
+}
 
 function displayBooks(){
     myLibrary.forEach(index => {
-        const div = document.createElement('div');
+        const divContainer = document.createElement('div');
         const span = document.createElement('span');
-        booksContainer.append(div);
-        span.textContent = `${index.title} ${index.author} ${index.pages}`;
-        div.classList.add('books');
-        div.append(span);
+        const button = document.createElement('button');
+        const divButton = document.createElement('button');
+        divButton.classList.add('closed')
+        divButton.append('books')
+        booksContainer.append(divContainer);
+        span.textContent = `${index.title} 
+        ${index.author} 
+        ${index.pages}`;
+        divContainer.classList.add('books');
+        divContainer.append(button)
+        divContainer.append(span);
+        button.textContent = "Read";
     })
 }
+
+//button to switch button "read" textContent between
+//Read and unread
 
 function Book (title,author,pages){
     this.title = title;
