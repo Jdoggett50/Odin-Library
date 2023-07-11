@@ -13,6 +13,7 @@ const author = document.querySelector('#author');
 const pages = document.querySelector('#total-pages');
 const clearBook = document.querySelector('.clear-book');
 let booksContainer = document.querySelector('.books-container');
+const readButton = document.querySelector('read')
 
 clearBook.addEventListener('click', () => {
     const inputValues = document.querySelectorAll('label > input');
@@ -24,7 +25,6 @@ bookBtn.addEventListener('click', () => {
         alert('Please create a book');
     } else 
     addBook(bookName.value, author.value, pages.value);
-    booksContainer.innerHTML = '';
     displayBooks()
 });
 
@@ -37,22 +37,29 @@ function removeBook() {
 
 }
 
+function checkRead() {
+    let isRead = false;
+    if(isRead == true){
+        console.log('active')
+    }
+    console.log('not active')
+}
+
 function displayBooks(){
+    booksContainer.innerHTML = '';
     myLibrary.forEach(index => {
         const divContainer = document.createElement('div');
         const span = document.createElement('span');
-        const button = document.createElement('button');
-        const divButton = document.createElement('button');
-        divButton.classList.add('closed')
-        divButton.append('books')
+        const closedButton = document.createElement('button');
         booksContainer.append(divContainer);
+        divContainer.classList.add('books');
+        divContainer.append(closedButton);
+        divContainer.append(span);
+        closedButton.classList.add('closed');
+        span.classList.add('book-content')
         span.textContent = `${index.title} 
         ${index.author} 
         ${index.pages}`;
-        divContainer.classList.add('books');
-        divContainer.append(button)
-        divContainer.append(span);
-        button.textContent = "Read";
     })
 }
 
