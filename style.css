@@ -1,4 +1,4 @@
-*, body, button {
+*, body, button, input{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -40,10 +40,11 @@ header {
 
 .create-book {
     display: grid;
-    grid-template-rows: auto auto repeat(3, 1fr) auto auto;
+    /* grid-template-rows: ; */
+    gap: 10px;
     background-color: rgb(255,255,255);
     width: 300px;
-    height: 300px;
+    height: 400px;
 }
 
 .create-book a {
@@ -52,7 +53,7 @@ header {
 }
 
 .create-book a > img {
-    margin: 2px 4px 0 0 ;
+    margin: 4px 6px 0 0 ;
     height: 20px;
     width: 20px;
 }
@@ -71,9 +72,14 @@ input[type="text"] {
     justify-self: center;
 }
 
+.radio-label {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .create-book button {
     justify-self: center;
-    margin-bottom: 10px;
     width: 100px;
     height: 25px;
 }
