@@ -24,25 +24,27 @@ bookBtn.addEventListener('click', () => {
     if(bookName.value === '' || author.value === '' || pages.value === ''){
         alert('Please create a book');
     } else 
-    addBook(bookName.value, author.value, pages.value);
+    addBook(bookName.value, author.value, pages.value, getStatus());
     displayBooks()
+    console.log(myLibrary)
 });
 
-function addBook(title, author, pages) {
+function addBook(title, author, pages, read) {
     //use this function to set the data on each object.
-    return myLibrary.push(new Book(title, author, pages));
+    return myLibrary.push(new Book(title, author, pages,read));
 }
 
 function removeBook() {
 
 }
 
-function checkRead() {
-    let isRead = false;
-    if(isRead == true){
-        console.log('active')
-    }
-    console.log('not active')
+function getStatus(){
+    //selecting input and reading it
+    const read = document.querySelector('#read');
+    if(read.checked){
+        return "Read"
+    } else
+        return "Not Read"
 }
 
 function displayBooks(){
@@ -50,12 +52,12 @@ function displayBooks(){
     myLibrary.forEach(index => {
         const divContainer = document.createElement('div');
         const span = document.createElement('span');
-        const closedButton = document.createElement('button');
+        const removeButton = document.createElement('button');
         booksContainer.append(divContainer);
         divContainer.classList.add('books');
-        divContainer.append(closedButton);
+        divContainer.append(removeButton);
         divContainer.append(span);
-        closedButton.classList.add('closed');
+        removeButton.classList.add('remove');
         span.classList.add('book-content')
         span.textContent = `${index.title} 
         ${index.author} 
@@ -63,11 +65,9 @@ function displayBooks(){
     })
 }
 
-//button to switch button "read" textContent between
-//Read and unread
-
-function Book (title,author,pages){
+function Book (title,author,pages,read){
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
 };

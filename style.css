@@ -1,4 +1,4 @@
-*, body, button, input{
+*, body, button, input, input[type="checkbox"]{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -41,7 +41,7 @@ header {
 .create-book {
     display: grid;
     /* grid-template-rows: ; */
-    gap: 10px;
+    /* gap: 10px; */
     background-color: rgb(255,255,255);
     width: 300px;
     height: 400px;
@@ -72,16 +72,20 @@ input[type="text"] {
     justify-self: center;
 }
 
-.radio-label {
-    width: 100px;
+.read {
     display: flex;
     justify-content: space-between;
+    width: 100px;
 }
 
 .create-book button {
     justify-self: center;
     width: 100px;
     height: 25px;
+}
+
+.submit-book {
+    align-self: center;
 }
 
 .brickwall {
@@ -110,21 +114,28 @@ input[type="text"] {
     grid-template-columns: 1fr 4fr 1fr;
 }
 
-.closed {
+.remove {
     grid-row: 1 / 2;
     grid-column: 3 / 4;
+    border: none;
+    background-color: white;
     height: 20px;
     width: 20px;
     background-repeat: no-repeat;
     background-image: url(photos/close.SVG);
 }
 
+.remove:hover {
+    border: 1px solid black; 
+}
+
+.remove:active{
+    background-color: lightgrey;
+}
+
 .book-content {
     align-self: center;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
-    /* margin-right: 35px;
-    margin-top: 40px; */
-    /* color: #c39054; */
     font-size: medium;
 }
