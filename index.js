@@ -27,19 +27,18 @@ bookBtn.addEventListener('click', () => {
         alert('Please create a book');
     } else 
     addBook(bookName.value, author.value, pages.value, getStatus());
+    clearForm()
     displayBooks()
-
     console.log(myLibrary)
 });
 
 function addBook(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
-    clearForm()
     return myLibrary
 }
 
 function removeBook() {
-
+    //this is going to look at the data of each book in the array.
 }
 
 function getStatus(){
