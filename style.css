@@ -72,7 +72,7 @@ input[type="text"] {
     justify-self: center;
 }
 
-.read {
+.read-label {
     display: flex;
     justify-content: space-between;
     width: 100px;
@@ -125,6 +125,12 @@ input[type="text"] {
     background-image: url(photos/close.SVG);
 }
 
+.read-text {
+    justify-self: center;
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+
 .remove:hover {
     border: 1px solid black; 
 }
@@ -139,3 +145,4 @@ input[type="text"] {
     grid-column: 2 / 3;
     font-size: medium;
 }
+
