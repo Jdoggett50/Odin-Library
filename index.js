@@ -8,17 +8,19 @@ addButton.addEventListener('click', () => background.style.display = 'grid');
 close.addEventListener('click',() => background.style.display = 'none');
 
 const bookBtn = document.querySelector('.submit-book');
-const bookName = document.querySelector('#book-name');
+const bookName = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#total-pages');
 const clearSelection = document.querySelector('.clear-selection');
-const read = document.querySelector('#read');
+const books = document.querySelector('.books');
+const read = document.querySelector('.readButton');
+const clearButton = document.querySelector('.remove')
+let booksContainer = document.querySelector('.books-container');
 
 clearSelection.addEventListener('click', clearForm);
 
 function clearForm() {
     const inputValues = document.querySelectorAll('label > input');
-    read.checked = false;
     inputValues.forEach((input)=> input.value = '');
 }
 
@@ -26,55 +28,59 @@ bookBtn.addEventListener('click', () => {
     if(bookName.value === '' || author.value === '' || pages.value === ''){
         alert('Please create a book');
     } else 
-    addBook(bookName.value, author.value, pages.value, getStatus());
-    clearForm()
-    displayBooks()
-    console.log(myLibrary)
+    addBook(bookName.value, author.value, pages.value, false);
+    clearForm();
+    displayBooks();
+    console.log(myLibrary);
 });
 
 function addBook(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
-    return myLibrary
-}
-
-function removeBook() {
-    //this is going to look at the data of each book in the array.
-}
-
-function getStatus(){
-    //selecting input and reading it
-    if(read.checked){
-        return "Read"
-    }   
-        return "Not Read"
+    return myLibrary;
 }
 
 function displayBooks(){
-    let booksContainer = document.querySelector('.books-container');
     booksContainer.textContent = '';
     myLibrary.forEach(index => {
         const divContainer = document.createElement('div');
         const span = document.createElement('span');
         const removeButton = document.createElement('button');
-        const readText = document.createElement('span');
+        const readButton = document.createElement('button');
+        removeButton.dataset.item = `${index.title}`;
         booksContainer.append(divContainer);
         divContainer.classList.add('books');
         divContainer.append(removeButton);
         divContainer.append(span);
-        divContainer.append(readText);
+        divContainer.append(readButton);
         removeButton.classList.add('remove');
-        span.classList.add('book-content')
+        span.classList.add('book-content');
         span.textContent = `${index.title} 
         ${index.author} 
         ${index.pages}`;
-        readText.textContent = `${index.read}`;
-        readText.classList.add('read-text')
-    })
-}
+        readButton.classList.add('read-button');
+    });
+};
 
 function Book (title,author,pages,read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+};
+
+booksContainer.addEventListener('click', (e)=>{
+    if(e.target.closest('.remove')){
+        const onlyRemove = e.target.dataset.item;
+        removeIndex(onlyRemove);
+        displayBooks()
+    }
+});
+
+function removeIndex(data){
+    myLibrary.forEach(index => {
+        if(index.title == data){
+            myLibrary.splice(index,1);
+        }
+    })
+    return myLibrary;
 };
