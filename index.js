@@ -29,7 +29,7 @@ bookBtn.addEventListener('click', () => {
         alert('Please create a book');
     } else 
     addBook(bookName.value, author.value, pages.value, false);
-    clearForm();
+    // clearForm();
     displayBooks();
     console.log(myLibrary);
 });
@@ -77,10 +77,12 @@ booksContainer.addEventListener('click', (e)=>{
 });
 
 function removeIndex(data){
-    myLibrary.forEach(index => {
-        if(index.title == data){
-            myLibrary.splice(index,1);
-        }
-    })
+    myLibrary = myLibrary.filter(book => book.title !== data);
     return myLibrary;
 };
+//we are setting the current global myLibrary to myLibrary.filters result
+// and returning the new version of myLibrary to the global myLibrary
+//the myLibrary.filter is looking at each book and comparing book.title
+//to the data attribute on the close buttons. it's saying as long as 
+//the book.title isn't equal to the data attribute on the remove button
+// to return it in the new array that it has created.
