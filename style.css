@@ -117,6 +117,8 @@ input[type="text"] {
     grid-template-rows: 1fr 4fr 1fr;
     grid-template-columns: 1fr 4fr 1fr;
     background-color: #f3f9d2;
+    border-radius: 4px;
+    box-shadow:  4px 4px 10px #2f2f2f;
 }
 
 .remove {
@@ -127,6 +129,7 @@ input[type="text"] {
     background-color: #f3f9d2;
     height: 20px;
     width: 20px;
+    margin-top: 5px;
     background-repeat: no-repeat;
     background-image: url(photos/close.SVG);
 }
@@ -138,14 +141,16 @@ input[type="text"] {
     height: 25px;
     justify-self: center;
     background-color: #BDC4A7;
-    border-radius: 6px;
+    border-radius: 4px;
     border: 1px solid #2f2f2f;
 }
 
+.read-button:hover {
+    background-color: rgba(147,130,127, 0.6)
+}
+
 .remove:hover {
-    color: rgb(186,85,211);
-    padding: 0;
-    border: 1px solid black; 
+    border: 1px solid rgba(47,47,47,0.7);
 }
 
 .remove:active{
