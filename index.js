@@ -23,7 +23,7 @@ bookBtn.addEventListener('click', () => {
         alert('Please create a book');
     } else
         addBook(bookName.value, author.value, pages.value);
-        // clearForm();
+        clearForm();
         displayBooks();
 });
 
@@ -33,7 +33,6 @@ booksContainer.addEventListener('click', (e) => {
         removeIndex(onlyRemove);
         displayBooks();
     } else if (e.target.closest('.read-button')) {
-        // console.log(Book.changeStatus());
         getStatus(e.target.dataset.status)
         displayBooks();
     }
