@@ -126,6 +126,8 @@ input[type="text"] {
 }
 
 .read-button {
+    width: 100px;
+    height: 25px;
     justify-self: center;
     grid-row: 3 / 4;
     grid-column: 2 / 3;
