@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'PTSerif-Regular';
+    src: url(fonts/ptserif-regular-webfont.woff);
+}
+
 *, body, button, input, input[type="checkbox"]{
     box-sizing: border-box;
     margin: 0;
@@ -43,8 +48,6 @@ header {
 
 .create-book {
     display: grid;
-    /* grid-template-rows: ; */
-    /* gap: 10px; */
     background-color: rgb(255,255,255);
     width: 300px;
     height: 400px;
@@ -85,6 +88,10 @@ input[type="text"] {
     justify-self: center;
     width: 100px;
     height: 25px;
+}
+
+.create-book span {
+    font-family: 'PTSerif-Regular';
 }
 
 .submit-book {
@@ -149,20 +156,25 @@ input[type="text"] {
     justify-self: center;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
+    font-family: 'PTSerif-Regular';
+    font-size: large;
 }
 
 .author-div {
     justify-self: center;
     grid-row: 3 / 4;
     grid-column: 2 / 3;
+    font-family: 'PTSerif-Regular';
+    font-size: large;
 }
 
 .pages-div {
     justify-self: center;
     grid-row: 4 / 5;
     grid-column: 2 / 3;
+    font-family: 'PTSerif-Regular';
+    font-size: small;
 }
-
 
 .read-button:hover {
     background-color: rgba(146,180,167,0.6)
