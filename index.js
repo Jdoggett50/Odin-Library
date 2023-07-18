@@ -52,22 +52,28 @@ function displayBooks() {
     booksContainer.textContent = '';
     myLibrary.forEach(index => {
         const divContainer = document.createElement('div');
-        const span = document.createElement('span');
+        const titleDiv = document.createElement('div');
+        const authorDiv = document.createElement('div');
+        const pagesDiv = document.createElement('div');
         const removeButton = document.createElement('button');
         const readButton = document.createElement('button');
-        removeButton.dataset.item = `${index.title}`;
         booksContainer.append(divContainer);
-        divContainer.classList.add('books');
+        titleDiv.textContent = `${index.title}`;
+        authorDiv.textContent = `${index.author}`;
+        pagesDiv.textContent = `${index.pages}`;
+        titleDiv.classList.add('title-div');
+        authorDiv.classList.add('author-div');
+        pagesDiv.classList.add('pages-div');
+        divContainer.append(titleDiv);
+        divContainer.append(authorDiv);
+        divContainer.append(pagesDiv);
         divContainer.append(removeButton);
-        divContainer.append(span);
         divContainer.append(readButton);
+        removeButton.dataset.item = `${index.title}`;
+        readButton.dataset.status = `${index.title}`;
         removeButton.classList.add('remove');
-        span.classList.add('book-content');
-        span.textContent = `${index.title} 
-        ${index.author} 
-        ${index.pages}`;
+        divContainer.classList.add('books');
         readButton.classList.add('read-button');
-        readButton.dataset.status = `${index.title}`
         if(index.read){
             readButton.textContent = `Read`;
         } else
