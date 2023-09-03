@@ -10,7 +10,7 @@ const pages = document.querySelector('#total-pages');
 const clearSelection = document.querySelector('.clear-selection');
 const books = document.querySelector('.books');
 const readToggle = document.querySelector('.readButton');
-const clearButton = document.querySelector('.remove')
+const clearButton = document.querySelector('.remove');
 let booksContainer = document.querySelector('.books-container');
 
 addButton.addEventListener('click', () => background.style.display = 'grid');
@@ -33,7 +33,7 @@ booksContainer.addEventListener('click', (e) => {
         removeIndex(onlyRemove);
         displayBooks();
     } else if (e.target.closest('.read-button')) {
-        getStatus(e.target.dataset.status)
+        getStatus(e.target.dataset.status);
         displayBooks();
     }
 });
@@ -91,6 +91,15 @@ function getStatus(data) {
 
 Book.changeStatus = function () {
     return this.read = !this.read;
+}
+
+class Book {
+    constructor(title,author,pages,read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = false;
+    }
 }
 
 function Book(title, author, pages) {
