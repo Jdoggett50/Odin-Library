@@ -11,7 +11,7 @@ const clearSelection = document.querySelector('.clear-selection');
 const books = document.querySelector('.books');
 const readToggle = document.querySelector('.readButton');
 const clearButton = document.querySelector('.remove');
-let booksContainer = document.querySelector('.books-container');
+const booksContainer = document.querySelector('.books-container');
 
 addButton.addEventListener('click', () => background.style.display = 'grid');
 close.addEventListener('click', () => background.style.display = 'none');
@@ -22,18 +22,17 @@ bookBtn.addEventListener('click', () => {
     if (bookName.value === '' || author.value === '' || pages.value === '') {
         alert('Please create a book');
     } else
-        addBook(bookName.value, author.value, pages.value);
+        addBook(myLibrary,new Book(bookName.value, author.value, pages.value));
         clearForm();
         displayBooks();
 });
 
 booksContainer.addEventListener('click', (e) => {
     if (e.target.closest('.remove')) {
-        const onlyRemove = e.target.dataset.item;
-        removeIndex(onlyRemove);
+        removeIndex(e.target.dataset.item);
         displayBooks();
     } else if (e.target.closest('.read-button')) {
-        getStatus(e.target.dataset.status);
+        getStatus(e.target.dataset.read);
         displayBooks();
     }
 });
@@ -43,10 +42,11 @@ function clearForm() {
     inputValues.forEach((input) => input.value = '');
 }
 
-function addBook(title, author, pages) {
-    myLibrary.push(new Book(title, author, pages));
-    return myLibrary;
+function addBook(arr,book){
+    arr.push(book);
+    return arr;
 }
+
 
 function displayBooks() {
     booksContainer.textContent = '';
@@ -69,8 +69,8 @@ function displayBooks() {
         divContainer.append(pagesDiv);
         divContainer.append(removeButton);
         divContainer.append(readButton);
-        removeButton.dataset.item = `${index.title}`;
-        readButton.dataset.status = `${index.title}`;
+        removeButton.dataset.book = `${index.title}`;
+        readButton.dataset.read = `${index.title}`;
         removeButton.classList.add('remove');
         divContainer.classList.add('books');
         readButton.classList.add('read-button');
@@ -81,33 +81,37 @@ function displayBooks() {
     });
 };
 
-function getStatus(data) {
-    myLibrary.map(book => {
-        if(book.title === data) {
-            book.read = Book.changeStatus();
-        }
-    })
-}
+//I either need to give each book index a name OR I can access 
+// their values outright with their indices. The problem with accessing
+//their indices, is that if I choose to do that, how will i be able to
+//down the road search the array for a particular book?
 
-Book.changeStatus = function () {
-    return this.read = !this.read;
+//I can make it so that when i click a book, it passes the title to
+// a function that finds the index of it and directly sets the read
+//status on that indices object.
+
+function getStatus(data) {
+    //find the selected index of the book
+    for(let i = 0; i < myLibrary.length; i++) {
+        if(data === myLibrary[i].title){
+            return myLibrary[i].changeStatus;
+        }
+    }   
 }
 
 class Book {
-    constructor(title,author,pages,read){
+    constructor(title,author,pages){
         this.title = title;
         this.author = author;
         this.pages = pages;
-        this.read = false;
+    }
+
+    read = false;
+
+    changeStatus() {
+        this.read = !this.read;
     }
 }
-
-function Book(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = false;
-};
 
 function removeIndex(data) {
     myLibrary = myLibrary.filter(book => book.title !== data);
