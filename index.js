@@ -32,7 +32,7 @@ booksContainer.addEventListener('click', (e) => {
         removeIndex(e.target.dataset.item);
         displayBooks();
     } else if (e.target.closest('.read-button')) {
-        getStatus(e.target.dataset.read);
+        getStatus(myLibrary,e.target.dataset.read);
         displayBooks();
     }
 });
@@ -90,11 +90,11 @@ function displayBooks() {
 // a function that finds the index of it and directly sets the read
 //status on that indices object.
 
-function getStatus(data) {
+function getStatus(arr,data) {
     //find the selected index of the book
     for(let i = 0; i < myLibrary.length; i++) {
-        if(data === myLibrary[i].title){
-            return myLibrary[i].changeStatus;
+        if(data === arr[i].title){
+            return arr[i].changeStatus();
         }
     }   
 }
